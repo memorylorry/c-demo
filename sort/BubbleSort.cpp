@@ -1,11 +1,6 @@
 #include <stdio.h>
+#include "../common/util.h";
 
-void printArray(int* arr, int size){
-    for(int i=0;i<size;i++){
-        printf("%d\t",arr[i]);
-    }
-    printf("\n");
-}
 /**
  * 冒泡排序
  **/
