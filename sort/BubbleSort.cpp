@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../common/util.h";
+#include "../common/util.h"
 
 /**
  * 冒泡排序
