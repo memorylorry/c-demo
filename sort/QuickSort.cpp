@@ -1,7 +1,9 @@
 #include "../common/util.h"
 #include<stdio.h>
 
-
+/**
+ * 快速排序
+ **/ 
 void quickSort(int* arr,int left,int right){
     if(left>=right)return;
 
