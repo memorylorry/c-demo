@@ -17,10 +17,10 @@ void straightInsertSort(int* arr, int len){
 
             //找到插入位置
             int j =0;
-            for(j = i;arr[j]>arr[0] && j>0 ;j--){
+            for(j = i-1;arr[j]>arr[0] && j>0 ;j--){
                 printf("j:%d\n",j);
                 printArray(arr,len);
-                arr[j] = arr[j-1];
+                arr[j+1] = arr[j];
             }
             arr[j+1] = arr[0];
             printArray(arr,len);
