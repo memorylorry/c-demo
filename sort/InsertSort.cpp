@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<unistd.h>
+#include<math.h>
 #include "../common/util.h"
 
 bool LT(int i,int j){
@@ -70,13 +71,34 @@ void P2InsertSort(int* arr, int len){
     
 }
 
+ /**
+ * 希尔排序
+ **/
+void SheelInsert(int* arr,int n,int dk){
+    int i,j,temp;
+    for(i=dk;i<n;i++){
+        temp = arr[i];
+        //循环从前部分往后部分排序
+        for(j = i-dk;j>i%dk && arr[j]>temp;j -= dk)
+            arr[j+dk] = arr[j];
+        //若上面for循环后移操作后，必回导致j与i的距离超过1倍的dk，故将temp值赋予到组内第1个位置
+        if(j+dk != i)
+            arr[j+dk] = temp;
+    }
+}
+void ShellSort(int* arr,int length,int dk){
+    //循环缩小dk间隔，使得数组的每个分组排好序
+    for(int i=dk;i>0;i--)
+        SheelInsert(arr,length,i);
+}
 
 int main(){
     int nums[] = {0,6,3,2,9,1,4,8,7,5};
 
     int size = sizeof(nums)/sizeof(int);
     //straightInsertSort(nums, size);
-    BInsertSort(nums, size);
-    
+    //BInsertSort(nums, size);
+    ShellSort(nums,size,5);
+    printArray(nums,size);
     return 0;
 }

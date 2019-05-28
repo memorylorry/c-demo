@@ -163,6 +163,40 @@ int arr[] = {0,6,3,1,9,2,4,8,7,5};
 
 ### 1.4.4 希尔排序([Code](./ShellSort.cpp))
 
+```
+void SheelInsert(int* arr,int n,int dk){
+    int i,j,temp;
+    for(i=dk;i<n;i++)//分别向每组的有序区域插入
+    {
+        temp=arr[i];
+        for(j=i-dk;(j>=i%dk)&&arr[j]>temp;j-=dk)//比较与记录后移同时进行
+            arr[j+dk]=arr[j];
+        if(j!=i-dk)
+            arr[j+dk]=temp;//插入
+    }
+}
+void ShellSort(int* arr,int length,int dk){
+    for(int i=dk;i>0;i--)
+        SheelInsert(arr,length,i);
+}
+
+实例：
+n=10
+int arr[] = {0,6,3,1,9,2,4,8,7,5};
+[dk=5 i=5] {0,6,3,1,9,2,4,8,7,5}
+           temp = 2
+           [dk=5 j=0] {0,6,3,1,9,2,4,8,7,5}
+[dk=5 i=6] {0,6,3,1,9,2,4,8,7,5}
+           temp = 4
+           [dk=5 j=1 ] {0,6,3,1,9,2,6,8,7,5}
+           [dk=5 j=-4] {0,4,3,1,9,2,6,8,7,5}
+[dk=5 i=7] {0,4,3,1,9,2,6,8,7,5}
+           temp = 8
+           [dk=5 j=2 ] {0,4,3,1,9,2,6,8,7,5}
+           [dk=5 j=-3] {0,4,3,1,9,2,6,8,7,5}
+```
+
+
 ## 1.5 选择排序
 ### 1.5.1 简单选择排序
 
