@@ -22,6 +22,16 @@ void simpleSelectSort(int* nums,int size){
     }
 }
 
+// 大顶堆排序
+void maxHeapSort(int* nums,int size){
+    // TODO achive it
+}
+
+// 小顶堆排序
+void minHeapSort(int* nums,int size){
+    // TODO achive it
+}
+
 int main(){
     int nums[] = {6,3,2,9,1,4,8,7,5};
     int size = sizeof(nums)/sizeof(int);
