@@ -4,19 +4,21 @@
 
 int main(){
     LiStack sp = NULL;
-    LiStackElementType* a;
+    // LiStackElementType* a;
 
     InitStack(&sp);
-    Push(&sp,1);
-    Push(&sp,3);
-    Push(&sp,6);
+    int nums[] = {1,3,6};
+    for(int i=0;i<3;i++)
+        Push(&sp,&nums[i]);    
 
-    Pop(&sp,a);
-    printf("%d\n",*a);
-    Pop(&sp,a);
-    printf("%d\n",*a);
-    Pop(&sp,a);
-    printf("%d\n",*a);
+    int* x= (int*)sp->data;
+    void* p;
+    Pop(&sp,&p);
+    printf("%d\n",*((int*)p));
+    Pop(&sp,&p);
+    printf("%d\n",*((int*)p));
+    Pop(&sp,&p);
+    printf("%d\n",*((int*)p));
     
     return 0;
 }

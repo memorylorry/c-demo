@@ -6,11 +6,11 @@ void InitStack(LiStack *stack){
     *stack = NULL;
 }
 
-bool GetTop(LiStack stack, LiStackElementType* p){
+bool GetTop(LiStack stack, void* p){
     return false;
 }
 
-bool Push(LiStack *stack, LiStackElementType p){
+bool Push(LiStack *stack, void* p){
     LiNode* ln = (LiNode*)malloc(sizeof(LiNode));
     ln->data = p;
     ln->next = *stack;
@@ -18,7 +18,7 @@ bool Push(LiStack *stack, LiStackElementType p){
     return true;
 }
 
-bool Pop(LiStack *stack, LiStackElementType* p){
+bool Pop(LiStack *stack, void** p){
     if(stack != NULL){
         *p = (*stack)->data;
         *stack = (*stack)->next;
