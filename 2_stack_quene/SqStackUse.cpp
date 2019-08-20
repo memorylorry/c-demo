@@ -4,18 +4,17 @@
 
 int main(){
     SqStack stack;
-    SqStackPointer sp = &stack;
     SqStackElementType* a;
-    InitStack(sp);
-    Push(sp,1);
-    Push(sp,3);
-    Push(sp,6);
+    InitStack(&stack);
+    Push(&stack,1);
+    Push(&stack,3);
+    Push(&stack,6);
     
-    Pop(sp,a);
+    Pop(&stack,a);
     printf("%d\n",*a);
-    Pop(sp,a);
+    Pop(&stack,a);
     printf("%d\n",*a);
-    Pop(sp,a);
+    Pop(&stack,a);
     printf("%d\n",*a);
     
     return 0;

@@ -1,15 +1,15 @@
 #include<stdio.h>
 #include<malloc.h>
 
-#include "./BinaryTree.h"
+#include "BinarySortTree.h"
 #include "../2_stack_quene/LiStack.h"
 
-void initailBinaryTree(BinaryTree* tree){
+void initailBTree(BTree* tree){
     *tree = NULL;
 }
 
-void insertNode(BinaryTree* tree, BinaryTreeNodeElementType data){
-    BinaryTreeNode* node = (BinaryTreeNode*)malloc(sizeof(BinaryTreeNode));
+void insertNode(BTree* tree, TreeNodeDataType data){
+    BTreeNode* node = (BTreeNode*)malloc(sizeof(BTreeNode));
     node->data = data;
 
     // 若指针为空,直接指向该节点
@@ -19,7 +19,7 @@ void insertNode(BinaryTree* tree, BinaryTreeNodeElementType data){
     }
 
     // 若不为空
-    BinaryTree p = *tree;
+    BTree p = *tree;
     while (true){
         if(data < p->data){
             if(p->lchild!=NULL)
@@ -43,7 +43,7 @@ void insertNode(BinaryTree* tree, BinaryTreeNodeElementType data){
 /**
  * 递归方式实现对二叉树的先序遍历
  **/
-void preOrder(BinaryTree tree){
+void preOrder(BTree tree){
     if(tree == NULL) return;
     printf("%d\t",tree->data);
     preOrder(tree->lchild);
@@ -51,9 +51,9 @@ void preOrder(BinaryTree tree){
 }
 
 /**
- * 递归方式实现对二叉树的中序遍历
+ * BTreeNodeElementType
  **/
-void inOrder(BinaryTree tree){
+void inOrder(BTree tree){
     if(tree == NULL) return;
     inOrder(tree->lchild);
     printf("%d\t",tree->data);
@@ -63,8 +63,8 @@ void inOrder(BinaryTree tree){
 /**
  * 利用栈实现二叉树的先序遍历
  **/
-void preOrder2(BinaryTree tree){
-    BinaryTree p = tree;
+void preOrder2(BTree tree){
+    BTree p = tree;
     void* node;
     LiStack stack;
     InitStack(&stack);
@@ -78,7 +78,7 @@ void preOrder2(BinaryTree tree){
             p = p->lchild;
         }else{
             Pop(&stack,&node);
-            p = (BinaryTree)node;
+            p = (BTree)node;
             p = p->rchild;
         }
     }
@@ -89,8 +89,8 @@ void preOrder2(BinaryTree tree){
 /**
  * 利用栈实现二叉树的中序遍历
  **/
-void inOrder2(BinaryTree tree){
-    BinaryTree p = tree;
+void inOrder2(BTree tree){
+    BTree p = tree;
     void* node;
     LiStack stack;
     InitStack(&stack);
@@ -102,7 +102,7 @@ void inOrder2(BinaryTree tree){
             p = p->lchild;
         }else{
             Pop(&stack,&node);
-            p = (BinaryTree)node;
+            p = (BTree)node;
             printf("%d\t",p->data);
             p = p->rchild;
         }
@@ -114,8 +114,8 @@ void inOrder2(BinaryTree tree){
 
 
 int main(){
-    BinaryTree tree;
-    initailBinaryTree(&tree);
+    BTree tree;
+    initailBTree(&tree);
 
     // 新增加节点
     insertNode(&tree,7);
@@ -129,14 +129,13 @@ int main(){
     insertNode(&tree,1);
 
     // 先序遍历
-    printf("\n");
     preOrder2(tree);
     preOrder(tree);
     // 中序遍历
     printf("\n");
     inOrder2(tree);
     inOrder(tree);
-    
+    printf("\n");
 
     return 0;
 }

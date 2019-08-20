@@ -1,1 +1,0 @@
-gcc ../2_stack_quene/LiStack.cpp ../2_stack_quene/LiStack.h BinaryTree.h BinarySortTree.cpp && ./a.out && rm -rf *.out *.gch
