@@ -33,5 +33,24 @@ LiStack.o : LiStack.h LiStack.cpp
 LiStackUse.o : LiStackUse.cpp
 	gcc -c LiStackUse.cpp
 
+
+# SqQueue的编译
+SqQueueUse : SqQueue.o SqQueueUse.o
+	gcc SqQueue.o SqQueueUse.o -o SqQueueUse && \
+		make clean && \
+		./SqQueueUse && \
+		rm SqQueueUse
+
+# SqQueue.so : SqStack.o # 编译出动态链接库
+# 	gcc SqStack.o -fPIC -shared -o ../lib/libSqStack.so &&\
+# 		make clean && rm -rf *.gch
+
+SqQueue.o : SqQueue.h SqQueue.cpp
+	gcc -c SqQueue.h SqQueue.cpp
+
+SqQueueUse.o : SqQueueUse.cpp
+	gcc -c SqQueueUse.cpp
+
+
 clean : 
 	rm *.o *.gch
