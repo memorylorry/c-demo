@@ -52,5 +52,23 @@ SqQueueUse.o : SqQueueUse.cpp
 	gcc -c SqQueueUse.cpp
 
 
+# LiQueue的编译
+LiQueueUse : LiQueue.o LiQueueUse.o
+	gcc LiQueue.o LiQueueUse.o -o LiQueueUse && \
+		make clean && \
+		./LiQueueUse && \
+		rm LiQueueUse
+
+# LiQueue.so : SqStack.o # 编译出动态链接库
+# 	gcc SqStack.o -fPIC -shared -o ../lib/libSqStack.so &&\
+# 		make clean && rm -rf *.gch
+
+LiQueue.o : LiQueue.h LiQueue.cpp
+	gcc -c LiQueue.h LiQueue.cpp
+
+LiQueueUse.o : LiQueueUse.cpp
+	gcc -c LiQueueUse.cpp
+
+
 clean : 
 	rm *.o *.gch
