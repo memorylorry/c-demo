@@ -1,5 +1,5 @@
-#ifndef _LISTACK_H_
-#define _LIQ_H_
+#ifndef _LiQueue_H_
+#define _LiQueue_H_
 
 #include<stdbool.h>
 
