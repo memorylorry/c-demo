@@ -1,0 +1,10 @@
+#!/bin/bash
+if [[ "$1" = "clean" ]];then
+    rm -rf *.o
+elif [[ "$1" = "" ]];then
+    echo "使用方法："
+    echo "./run <文件名>    编译并执行文件"
+    echo "./run clean      清理文件"
+else
+    gcc "$1" -o "runner.o" && ./runner.o && rm -rf *.o
+fi
