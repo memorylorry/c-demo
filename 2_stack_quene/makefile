@@ -70,5 +70,26 @@ LiQueueUse.o : LiQueueUse.cpp
 	gcc -c LiQueueUse.cpp
 
 
+# BraceMatch的编译
+BraceMatch : BraceMatch.o LiStack.o
+	gcc BraceMatch.o LiStack.o -o BraceMatch && \
+		make clean && \
+		./BraceMatch && \
+		rm BraceMatch
+
+BraceMatch.o : BraceMatch.cpp
+	gcc -c BraceMatch.cpp
+
+
+# StackImplementRecrusive的编译
+StackImplementRecrusive : StackImplementRecrusive.o
+	gcc StackImplementRecrusive.o -o StackImplementRecrusive && \
+		rm *.o && \
+		./StackImplementRecrusive && \
+		rm StackImplementRecrusive
+
+StackImplementRecrusive.o : StackImplementRecrusive.cpp
+	gcc -c StackImplementRecrusive.cpp
+
 clean : 
 	rm *.o *.gch
