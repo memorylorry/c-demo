@@ -25,55 +25,32 @@ MGraph* buildMGraph(){
   return mg; 
 }
 
-/**
- * BFS 广度优先搜索
- **/
+// DFS
 bool visited[MaxMGraphVexNum];
 void initVisited(){
   for(int i=0;i<MaxMGraphVexNum;i++)
     visited[i] = false;
 }
-void BFS(MGraph* mg, int v){
-  // inital a queue
-  SqQueue* queue = (SqQueue*)malloc(sizeof(SqQueue));
-  InitalQueue(queue);
-  int val;
+void DFS(MGraph* mg,int v){
+    printf("%d ",v);
+    visited[v] = true;
 
-  EnQueue(queue,v);
-  //view it
-  while(!IsEmpty(*queue)){
-    DeQueue(queue,&val);
-    // 遍历
-    if(!visited[val]){
-      printf("%d ",val);
-      visited[val] = true;
+    for(int i =0;i<mg->vexnum;i++){
+        if(mg->Edge[v][i]==1 && !visited[i])DFS(mg,i);
     }
-
-    // 把该节点 后继 未访问的 节点加入
-    for(int i=0; i< mg->vexnum; i++){
-      if(mg->Edge[val][i] == 1 && visited[i] == false){
-        EnQueue(queue,i);
-      }
-    }
-  }
-  printf("\n");
 }
-void BFSTravese(MGraph* mg){
-  initVisited();
-  for(int i=0;i<mg->vexnum;i++){
+void DFSTravese(MGraph* mg){
+    initVisited();
+    for(int i=0;i<mg->vexnum;i++){
     if(!visited[i]){
-      BFS(mg,i);
+      DFS(mg,i);
     }
   }
 }
-
 
 int main(){
   MGraph* mg = buildMGraph(); 
   printf("\n");
-  BFSTravese(mg);
+  DFSTravese(mg);
   return 0;
 }
-
-
-
