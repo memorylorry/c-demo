@@ -1,6 +1,7 @@
 #ifndef _MGRAPH_H_
 #define _MGRAPH_H_H
 
+#include<limits.h>
 #include<stdbool.h>
 
 /**
@@ -17,6 +18,8 @@ typedef struct{
   int vexnum,arcnum;
 }MGraph;
 
+void InitalMGraph(MGraph* mg);
+
 /**
  * 增加顶点
  **/
@@ -26,6 +29,7 @@ bool addVex(MGraph* mg, VertexType vex);
  * 增加一条有向边
  **/
 bool addDEdge(MGraph* mg,EdgeType i, EdgeType j);
+bool addDWEdge(MGraph* mg,EdgeType i, EdgeType j ,int weight);
 
 /**
  * 增加一条无向边
