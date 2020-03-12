@@ -48,6 +48,14 @@ TemplateDemo : TemplateDemo.o
 TemplateDemo.o : TemplateDemo.cpp
 	g++ -c TemplateDemo.cpp
 
+
+# MapTest
+MapTest : MapTest.o 
+	g++ MapTest.o -o MapTest && make clean && ./MapTest && rm -rf MapTest
+	
+MapTest.o : MapTest.cpp
+	g++ -c MapTest.cpp
+
 # Common
 clean :
 	rm -rf *.o *.gch
