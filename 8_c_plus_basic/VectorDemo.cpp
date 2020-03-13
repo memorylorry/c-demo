@@ -23,6 +23,10 @@ int main(){
     vector<int> ivec;
     init(&ivec);
     cout<<"initial "<<ivec.size()<<endl;
-    read(ivec);
+    // read(ivec);
+    ivec.begin();
+    ivec.rbegin();
+    ivec.insert( ivec.begin() , vector<int>::value_type(3) );
+    cout<<ivec[0]<<endl;
     return 0;
 }

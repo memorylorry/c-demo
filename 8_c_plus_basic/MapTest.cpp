@@ -5,18 +5,14 @@ using namespace std;
 
 int main(){
     map<string,int> m;
+    m["age"] = 1;
+    m.insert(map<string,int>::value_type("amount",3));
 
-    // method 1. 用array方式增加元素
-    m["age"] = 3;
-    // method 2. 调用插入方法
-    m.insert(map<string,int>::value_type("amount",6));
-
-    cout<<m.size();
-
-    map<string,int>::iterator begin = m.begin();
-
-    map<string,int>::reverse_iterator rbegin = m.rbegin(); // 返回一个指向map尾部的逆向迭代器
-    map<string,int>::reverse_iterator rend = m.rend(); // 返回一个指向map头部的逆向迭代器
-
+    // m.erase("age");
+    map<string,int>::iterator it = m.find("age");
+    if(it== m.end())
+        m.erase(it);
+    cout<<m["age"]<<m.max_size();
+    
     return 0;
 }
