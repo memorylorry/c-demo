@@ -5,8 +5,14 @@ project(1_c_plus LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include_directories(
+    /usr/local/include/opencv4/
+)
+
 add_executable(1_HelloWorld HelloWorld.cpp)
 add_executable(2_StringInitial StringInitial.cpp)
 add_executable(3_StringOperation StringOperation.cpp)
 add_executable(4_TemplateDemo TemplateDemo.cpp)
 add_executable(5_Mul_Param_Fun Mul_Param_Fun.cpp)
+add_executable(6_opencv_demo test.cpp)
+
