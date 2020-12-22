@@ -12,6 +12,14 @@ int main(int argc,const char* argv[]){
     Mat dstlmage;
     blur(srclmage, dstlmage, Size(7, 7));
     imshow ("[ 均值滤波器效果图 ] ", dstlmage);
-    waitKey(0);
+
+    // Because we want our window to be displayed until the user presses a key (otherwise the program would end far too quickly),
+    // we use the cv::waitKey function whose only parameter is just how long should it wait for a user input (measured in milliseconds).
+    // Zero means to wait forever. The return value is the key that was pressed.
+    int k = waitKey(0);
+    // 如果按了键盘上的s键，则保存图片
+    if(k == 's'){
+        imwrite("blur_sakura.png", dstlmage);
+    }
     return 0;
 }
